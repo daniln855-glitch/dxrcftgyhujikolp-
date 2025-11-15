@@ -20,17 +20,37 @@
             --light-text: #fff;
             --dark-bg: #2c3e50;
             --section-bg: #f9f9f9;
+            --card-bg: #ffffff;
+            --nav-bg: rgba(255, 255, 255, 0.95);
+            --border-color: #e1e5e9;
+            --hero-bg: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        /* Темная тема */
+        [data-theme="dark"] {
+            --primary-color: #ff4081;
+            --secondary-color: #7b1fa2;
+            --accent-color: #f50057;
+            --text-color: #e0e0e0;
+            --light-text: #ffffff;
+            --dark-bg: #121212;
+            --section-bg: #1e1e1e;
+            --card-bg: #2d2d2d;
+            --nav-bg: rgba(30, 30, 30, 0.95);
+            --border-color: #444;
+            --hero-bg: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
         }
 
         body {
-            background: #fff;
+            background: var(--section-bg);
             color: var(--text-color);
             overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         /* Навигация */
         nav {
-            background: rgba(255, 255, 255, 0.95);
+            background: var(--nav-bg);
             backdrop-filter: blur(10px);
             padding: 1.2rem 2rem;
             position: fixed;
@@ -38,7 +58,8 @@
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
         }
 
         .nav-container {
@@ -65,6 +86,7 @@
         .nav-links {
             display: flex;
             gap: 2rem;
+            align-items: center;
         }
 
         .nav-links a {
@@ -97,6 +119,28 @@
         .nav-links a:hover::after,
         .nav-links a.active::after {
             width: 80%;
+        }
+
+        /* Переключатель темы */
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+        }
+
+        .theme-toggle:hover {
+            background: var(--primary-color);
+            color: white;
         }
 
         .mobile-menu-btn {
@@ -133,11 +177,12 @@
             display: flex;
             align-items: center;
             padding: 0 2rem;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            background: var(--hero-bg);
             border-radius: 20px;
             margin-bottom: 3rem;
             position: relative;
             overflow: hidden;
+            transition: all 0.3s ease;
         }
 
         .hero-content {
@@ -178,7 +223,8 @@
             line-height: 1.6;
             margin-bottom: 2.5rem;
             max-width: 600px;
-            color: #666;
+            color: var(--text-color);
+            opacity: 0.8;
         }
 
         /* Кнопки */
@@ -249,6 +295,7 @@
             transition: all 0.3s ease;
             height: 400px;
             position: relative;
+            background: var(--card-bg);
         }
 
         .gallery-item:hover {
@@ -295,7 +342,8 @@
         .about-text {
             font-size: 1.1rem;
             line-height: 1.8;
-            color: #666;
+            color: var(--text-color);
+            opacity: 0.8;
         }
 
         .about-text p {
@@ -312,10 +360,11 @@
         .stat-item {
             text-align: center;
             padding: 2rem;
-            background: white;
+            background: var(--card-bg);
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease;
+            border: 1px solid var(--border-color);
         }
 
         .stat-item:hover {
@@ -330,7 +379,8 @@
         }
 
         .stat-label {
-            color: #666;
+            color: var(--text-color);
+            opacity: 0.8;
             font-weight: 500;
         }
 
@@ -343,13 +393,14 @@
         }
 
         .hobby-card {
-            background: white;
+            background: var(--card-bg);
             border-radius: 15px;
             padding: 2.5rem 2rem;
             text-align: center;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
             border-top: 4px solid var(--primary-color);
+            border: 1px solid var(--border-color);
         }
 
         .hobby-card:hover {
@@ -369,7 +420,8 @@
         }
 
         .hobby-card p {
-            color: #666;
+            color: var(--text-color);
+            opacity: 0.8;
             line-height: 1.6;
         }
 
@@ -406,11 +458,12 @@
         }
 
         .timeline-content {
-            background: white;
+            background: var(--card-bg);
             padding: 2rem;
             border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             position: relative;
+            border: 1px solid var(--border-color);
         }
 
         .timeline-content::before {
@@ -446,10 +499,11 @@
         }
 
         .contact-info {
-            background: white;
+            background: var(--card-bg);
             padding: 3rem;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-color);
         }
 
         .contact-item {
@@ -462,7 +516,7 @@
         }
 
         .contact-item:hover {
-            background: #f8f9fa;
+            background: var(--section-bg);
         }
 
         .contact-icon {
@@ -473,10 +527,11 @@
         }
 
         .contact-form {
-            background: white;
+            background: var(--card-bg);
             padding: 3rem;
             border-radius: 15px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border-color);
         }
 
         .form-group {
@@ -494,10 +549,12 @@
         .form-group textarea {
             width: 100%;
             padding: 1rem;
-            border: 2px solid #e1e5e9;
+            border: 2px solid var(--border-color);
             border-radius: 10px;
             font-size: 1rem;
             transition: border-color 0.3s ease;
+            background: var(--section-bg);
+            color: var(--text-color);
         }
 
         .form-group input:focus,
@@ -560,7 +617,7 @@
                 top: 100%;
                 left: 0;
                 right: 0;
-                background: white;
+                background: var(--nav-bg);
                 flex-direction: column;
                 padding: 1rem;
                 box-shadow: 0 5px 15px rgba(0,0,0,0.1);
@@ -644,6 +701,9 @@
                 <a href="#" class="nav-link" data-page="achievements">Достижения</a>
                 <a href="#" class="nav-link" data-page="blog">Блог</a>
                 <a href="#" class="nav-link" data-page="contact">Контакты</a>
+                <button class="theme-toggle" id="themeToggle" title="Переключить тему">
+                    <i class="fas fa-moon"></i>
+                </button>
             </div>
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <i class="fas fa-bars"></i>
@@ -674,7 +734,7 @@
 
         <div class="text-center mt-3">
             <h2 class="section-title">Мир в моем восприятии</h2>
-            <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto 3rem; line-height: 1.6; color: #666;">
+            <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto 3rem; line-height: 1.6; color: var(--text-color); opacity: 0.8;">
                 Красота в деталях, искусство в повседневности, а вдохновение - во всем, что меня окружает. 
                 Я нахожу радость в простых вещах и делюсь этим с миром.
             </p>
@@ -708,7 +768,7 @@
     <!-- Галерея -->
     <div id="gallery" class="page">
         <h2 class="section-title">Моя галерея</h2>
-        <p style="text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+        <p style="text-align: center; font-size: 1.2rem; color: var(--text-color); opacity: 0.8; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
             Взгляд через объектив, моменты жизни, застывшие во времени. Каждая фотография - это часть моей истории.
         </p>
         
@@ -728,7 +788,7 @@
                 </div>
             </div>
             <div class="gallery-item">
-                <img src="https://source.unsplash.com/random/600x800/?art,woman" alt="Творчество">
+                <img src="https://ibb.co/r2ck2Wx5" alt="Творчество">
                 <div class="gallery-caption">
                     <h4>В процессе творения</h4>
                     <p>Работа над новым проектом</p>
@@ -828,7 +888,7 @@
     <!-- Увлечения -->
     <div id="hobbies" class="page">
         <h2 class="section-title">Мои увлечения</h2>
-        <p style="text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+        <p style="text-align: center; font-size: 1.2rem; color: var(--text-color); opacity: 0.8; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
             То, что наполняет мою жизнь смыслом, радостью и вдохновением. Каждое увлечение - это часть меня.
         </p>
         
@@ -924,7 +984,7 @@
     <!-- Блог -->
     <div id="blog" class="page">
         <h2 class="section-title">Мой блог</h2>
-        <p style="text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+        <p style="text-align: center; font-size: 1.2rem; color: var(--text-color); opacity: 0.8; margin-bottom: 3rem; max-width: 800px; margin-left: auto; margin-right: auto;">
             Мысли, идеи, размышления и истории из моей творческой жизни. Делиться - значит вдохновлять.
         </p>
         
@@ -995,17 +1055,17 @@
                 </div>
                 
                 <div class="social-links" style="justify-content: flex-start; margin-top: 3rem;">
-                    <a href="#" class="social-link">
+                    <a href="https://www.instagram.com/kweuaga/" class="social-link" target="_blank">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="#" class="social-link">
+                    <a href="https://t.me/kweuaga" class="social-link" target="_blank">
                         <i class="fab fa-telegram"></i>
                     </a>
-                    <a href="#" class="social-link">
+                    <a href="https://www.pinterest.com/lirishabrand/" class="social-link" target="_blank">
                         <i class="fab fa-pinterest"></i>
                     </a>
-                    <a href="#" class="social-link">
-                        <i class="fab fa-behance"></i>
+                    <a href="https://www.vk.com/kweuaga" class="social-link" target="_blank">
+                        <i class="fab fa-vk"></i>
                     </a>
                 </div>
             </div>
@@ -1046,6 +1106,7 @@
             <h3 style="margin-bottom: 1rem;">LIRISHA</h3>
             <p style="margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">
                 Творчество - это моя страсть, искусство - мой язык, а вдохновение - мой путеводитель.
+            </p>
            <div class="social-links">
     <a href="https://www.instagram.com/kweuaga/" class="social-link" target="_blank">
         <i class="fab fa-instagram"></i>
@@ -1070,6 +1131,38 @@
     </footer>
 
     <script>
+        // Управление темной темой
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        // Проверяем сохраненную тему или системные настройки
+        const savedTheme = localStorage.getItem('theme');
+        const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            themeIcon.className = 'fas fa-sun';
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            themeIcon.className = 'fas fa-moon';
+        }
+        
+        // Переключение темы
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Меняем иконку
+            if (newTheme === 'dark') {
+                themeIcon.className = 'fas fa-sun';
+            } else {
+                themeIcon.className = 'fas fa-moon';
+            }
+        });
+
         // Навигация между страницами
         function showPage(pageId) {
             // Скрыть все страницы
